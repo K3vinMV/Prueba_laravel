@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("correo");
             $table->text("mensaje");
-            $table->string("Estatus", 20)->default("Nuevo")
+            $table->string("Estatus", 20)->default("Nuevo");
             $table->timestamps();
         });
     }
