@@ -9,6 +9,7 @@
     <h1>Formulario de contacto</h1>
 
     <form action="/contacto-recibe" method ="POST">
+        @csrf 
         <label form="nombre">Nombre</label>
         <input type="text" name="nombre"><br>
 
