@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\Contacto;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,24 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contacto', function () {
-    return view('formulario-contacto');
-});
+Route::get('/contacto', [ContactoController::class, "formulario"]);
 
-Route::post('/contacto-recibe', function (Request $request) {
-    //dd($request->all());
-
-    $request->validate([
-        "nombre" => "required|min:3|max:255",
-        "correo" => "required|email",
-        "mensaje" => "required|min:10"
-    ]);
-
-    $contacto = new Contacto();
-    $contacto->nombre = $request->nombre;
-    $contacto->correo = $request->correo;
-    $contacto->mensaje = $request->mensaje;
-    $contacto->save();
-
-    return redirect("/contacto");
-});
+Route::post('/contacto-recibe', [ContactoController::class, "newContact"]);
