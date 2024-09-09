@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,13 @@ Route::get('/contacto', function () {
 });
 
 Route::post('/contacto-recibe', function (Request $request) {
-    dd($request->all());
+    //dd($request->all());
+
+    $contacto = new Contacto();
+    $contacto->nombre = $request->nombre;
+    $contacto->correo = $request->correo;
+    $contacto->mensaje = $request->mensaje;
+    $contacto->save();
+
+    return redirect("/contacto");
 });
