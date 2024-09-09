@@ -26,6 +26,12 @@ Route::get('/contacto', function () {
 Route::post('/contacto-recibe', function (Request $request) {
     //dd($request->all());
 
+    $request->validate([
+        "nombre" => "required|min:3|max:255",
+        "correo" => "required|email",
+        "mensaje" => "required|min:10"
+    ]);
+
     $contacto = new Contacto();
     $contacto->nombre = $request->nombre;
     $contacto->correo = $request->correo;
