@@ -8,10 +8,16 @@
 </head>
 
 <body>
-    <h1>Formulario de contacto</h1>
+    <h1>Formulario de contacto para {{ $tipo_persona }}</h1>
 
     <form action="/contacto-recibe" method="POST">
         @csrf
+
+        @if ($tipo_persona == 'cliente')
+        <label for="no_cliente">Numero de cliente:</label><br>
+        <input type="text" name="no_cliente" id="no_cliente"><br>
+        @endif
+
         <label form="nombre">Nombre</label>
         <input type="text" name="nombre" value="{{ old('nombre') }}"><br>
         @error('nombre')

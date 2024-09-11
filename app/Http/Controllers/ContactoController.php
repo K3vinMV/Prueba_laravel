@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class ContactoController extends Controller
 {
-    public function formulario()
+    public function formulario($tipo_persona = null)
     {
-        return view('formulario-contacto');
+        return view('formulario-contacto', compact('tipo_persona'));
     }
     //
 
