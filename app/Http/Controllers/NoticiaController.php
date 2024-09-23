@@ -12,6 +12,8 @@ class NoticiaController extends Controller
      */
     public function index()
     {
+        $noticias = Noticia::all();
+        return view('noticias.index-noticias');
         //
     }
 
@@ -21,6 +23,7 @@ class NoticiaController extends Controller
     public function create()
     {
         //
+        return view('noticias/create-noticias');
     }
 
     /**
@@ -28,6 +31,9 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+        //validacion aqui
+        Noticia::create($request->all());
+        return redirect()->route('noticia.index');
         //
     }
 
